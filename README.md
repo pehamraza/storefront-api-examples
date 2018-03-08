@@ -1,11 +1,33 @@
-# Storefront API Examples
+# node-js-buy
+An example using [js-buy-sdk](https://github.com/Shopify/js-buy-sdk) built with Node, Express and Pug.
 
-Shopify's [Storefront API](https://help.shopify.com/api/storefront-api) allows you to build custom ecommerce experiences.
+## Prerequisites
 
-Each directory is a self-contained example application that demonstrates usage of the Storefront API.
-The examples are built on both Shopify specific libraries and popular open source frameworks (React, Ember, etc).
+* [Git](https://git-scm.com/)
+* [Node.js](https://nodejs.org/)
+* [Yarn](https://yarnpkg.com/en/)
 
-See the `README.md` in each example directory for more details and how to get started.
+## Installation
+
+* `git clone git@github.com:Shopify/storefront-api-examples.git` this repository
+* `cd storefront-api-examples`
+* `cd node-js-buy`
+* `yarn install`
+
+## Configuring
+
+If you would like to connect your store to this example, open up `src/js-buy-sdk.js` and update the `domain` and `storefrontAccessToken`:
+```js
+const config = new Config({
+  storefrontAccessToken: 'your-storefront-access-token',
+  domain: 'your-shop-name.myshopify.com',
+});
+```
+
+## Running
+
+* `yarn start`
+* View the example at [http://localhost:4200](http://localhost:4200).
 
 ## Contributing
 For help on setting up the repo locally, building, testing, and contributing
