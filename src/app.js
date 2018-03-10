@@ -8,6 +8,15 @@ const app = express();
 const productsPromise = client.fetchAllProducts();
 const shopPromise = client.fetchShopInfo();
 
+const cors = require('cors');
+
+const corsOptions = {
+  origin: '*', // change * with host name
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
+
 app.set('view engine', 'pug');
 
 app.use(express.static(path.join(__dirname, '../../shared')));
