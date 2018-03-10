@@ -37,6 +37,18 @@ app.get('/', (req, res) => {
   });
 });
 
+// Custom Methods START
+// written by Peham
+
+// 1. Create a checkout Id
+app.post('/', (req, res) => {
+  return client.createCheckout({}).then((checkout) => {
+    res.send(JSON.stringify({id: checkout.id}));
+  });
+});
+
+// Custom Methods END
+
 app.post('/add_line_item/:id', (req, res) => {
   const options = req.body;
   const productId = req.params.id;
