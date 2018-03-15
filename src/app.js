@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 import Client from 'shopify-buy';
+import {resolve} from 'url';
 import client from './js-buy-sdk';
 
 const app = express();
@@ -19,7 +20,7 @@ app.use(cors(corsOptions));
 
 app.set('view engine', 'pug');
 
-app.use(express.static(path.join(__dirname, '../../shared')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -54,6 +55,15 @@ app.post('/', (req, res) => {
   return client.createCheckout({}).then((checkout) => {
     res.send(JSON.stringify({id: checkout.id}));
   });
+});
+
+app.get('/dev', (req, res) => {
+  const cartPromise = client.fetchCheckout(req.query.checkoutId);
+
+  // cartPromise.then(function( v ) { res.send(y); });
+  resolve('test');
+
+  return cartPromise.then((cart) => { res.send(cart); });
 });
 
 // Custom Methods END
